@@ -18,14 +18,18 @@ useEffect(() => {
 }, []);
 
 
-const handleCreate = () => {
+const createUserClickHandler = () => {
   setShowCreate(true)
+}
+
+const closeCreateUserClickHandler = () => {
+  setShowCreate(false);
 }
 
     return(
     <section className="card users-container">
       <Search />
-      {showCreate && <UserCreate />}
+      {showCreate && <UserCreate  onClose={closeCreateUserClickHandler}/>}
       {/* <!-- Search bar component --> */}
        
 
@@ -167,7 +171,7 @@ const handleCreate = () => {
       </div>
 
       {/* <!-- New user button  --> */}
-      <button className="btn-add btn" onClick={handleCreate}>Add new user</button>
+      <button className="btn-add btn" onClick={createUserClickHandler}>Add new user</button>
 
       {/* <!-- Pagination component  --> */}
       <Pagination />
