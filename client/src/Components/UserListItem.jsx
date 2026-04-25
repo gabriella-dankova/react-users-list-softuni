@@ -12,10 +12,10 @@ export default function UserListItem({
     return(
        <tr>
               <td>
-                <img src={imageUrl}
+                <img src={imageUrl || 'http://www.w3.org/2000/svg'}
                   alt={`${firstName}'s profile`} className="image" />
               </td>
-              <td>{firstName}</td>
+              <td>{firstName}</td> 
               <td>{lastName}</td>
               <td>{email}</td>
               <td>{phoneNumber}</td>

@@ -1,7 +1,7 @@
 import './App.css';
 import Footer from './Components/Footer';
 import Heather from './Components/Heather';
-import Userlist from './Components/UserList';
+import UserList from './Components/UserList';
 
 function App() {
   
@@ -16,7 +16,7 @@ function App() {
   {/* <!-- Main component  --> */}
   <main className="main">
     {/* <!-- Section component  --> */}
-    <Userlist />
+    <UserList />
 
     {/* <!-- User details component  --> */}
     {/* <!-- <div className="overlay">

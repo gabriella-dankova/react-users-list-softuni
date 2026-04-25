@@ -6,7 +6,7 @@ import userService from "../services/userService";
 import UserCreate from "./UserCreate";
 
 
-export default function Userlist (){
+export default function UserList (){
   const [users, setUsers] = useState([]);
   const[showCreate, setShowCreate] = useState(false);
 
@@ -26,10 +26,28 @@ const closeCreateUserClickHandler = () => {
   setShowCreate(false);
 }
 
+const saveCreateUserClickHandler = async (e) => {
+  
+  e.preventDefault();
+  
+  const formData = new FormData(e.target);
+  const userData = Object.fromEntries(formData);
+
+  
+  const newUser = await userService.create(userData);
+
+  setUsers(state => [...state, newUser]);
+
+  setShowCreate(false);
+}
     return(
     <section className="card users-container">
       <Search />
-      {showCreate && <UserCreate  onClose={closeCreateUserClickHandler}/>}
+      {showCreate && 
+        <UserCreate 
+           onClose={closeCreateUserClickHandler}
+           onSave={saveCreateUserClickHandler}
+        />}
       {/* <!-- Search bar component --> */}
        
 
