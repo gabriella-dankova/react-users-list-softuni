@@ -11,6 +11,14 @@ export default {
 
     async create(userData) {
 
+        const { country, city, street, streetNumber, ...postData } = userData;
+
+    postData.address = { country, city, street, streetNumber };
+    postData.createdAt = new Date().toISOString();
+    postData.updatedAt = new Date().toISOString();
+
+
+
         const response = await fetch (baseURL, {
             method: 'POST',
             headers: {
