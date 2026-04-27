@@ -47,6 +47,10 @@ const userInfoClickHandler = (userId) => {
   setUserIdInfo(userId)
 }
 
+const userInfoCloseHandler = () => {
+  setUserIdInfo(null);
+}
+
 
     return(
     <section className="card users-container">
@@ -60,6 +64,7 @@ const userInfoClickHandler = (userId) => {
     {userIdInfo &&(
       <UserInfo 
         userId={userIdInfo}
+        onClose={userInfoCloseHandler}
       />)}
       {/* <!-- Search bar component --> */}
        
