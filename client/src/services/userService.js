@@ -9,6 +9,13 @@ export default {
         return users;
     },
 
+    async getOne(userId){
+        const response = await fetch(`${baseURL}/${userId}`);
+        const user = await response.json();
+
+        return user;
+    },
+
     async create(userData) {
 
         const { country, city, street, streetNumber, ...postData } = userData;
@@ -24,7 +31,7 @@ export default {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(userData),
+            body: JSON.stringify(postData),
 
         });
 

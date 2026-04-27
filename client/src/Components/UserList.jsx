@@ -4,11 +4,13 @@ import Search from "./Search";
 import UserListItem from "./UserListItem";
 import userService from "../services/userService";
 import UserCreate from "./UserCreate";
+import UserInfo from "./UserInfo";
 
 
 export default function UserList (){
   const [users, setUsers] = useState([]);
   const[showCreate, setShowCreate] = useState(false);
+  const[userIdInfo, setUserIdInfo] = useState();
 
 useEffect(() => {
   userService.getAll()
@@ -40,6 +42,12 @@ const saveCreateUserClickHandler = async (e) => {
 
   setShowCreate(false);
 }
+
+const userInfoClickHandler = (userId) => {
+  setUserIdInfo(userId)
+}
+
+
     return(
     <section className="card users-container">
       <Search />
@@ -48,6 +56,11 @@ const saveCreateUserClickHandler = async (e) => {
            onClose={closeCreateUserClickHandler}
            onSave={saveCreateUserClickHandler}
         />}
+
+    {userIdInfo &&(
+      <UserInfo 
+        userId={userIdInfo}
+      />)}
       {/* <!-- Search bar component --> */}
        
 
@@ -182,6 +195,7 @@ const saveCreateUserClickHandler = async (e) => {
            
             {users.map(user => <UserListItem 
                 key={user._id} 
+                onInfoClick={userInfoClickHandler}
                 {...user}
                 />)}
           </tbody>
